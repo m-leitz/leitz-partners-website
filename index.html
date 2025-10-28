@@ -31,13 +31,6 @@
             position: relative;
         }
 
-        .container::before {
-            content: '';
-            display: block;
-            width: 100%;
-            padding-top: 177.78%;
-        }
-
         .contact-link {
             position: absolute;
             top: 2rem;
@@ -78,5 +71,23 @@
     <div class="container">
         <h1>Leitz Partners</h1>
     </div>
+
+    <script>
+        function adjustPageHeight() {
+            const img = new Image();
+            img.src = 'background.jpg';
+            
+            img.onload = function() {
+                const aspectRatio = img.height / img.width;
+                const screenWidth = window.innerWidth;
+                const calculatedHeight = screenWidth * aspectRatio;
+                
+                document.querySelector('.container').style.height = calculatedHeight + 'px';
+            };
+        }
+
+        adjustPageHeight();
+        window.addEventListener('resize', adjustPageHeight);
+    </script>
 </body>
 </html>
