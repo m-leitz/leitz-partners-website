@@ -13,15 +13,21 @@
 
         body {
             font-family: Helvetica, Arial, sans-serif;
-            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg');
+            background-size: contain;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+
+        .container {
+            min-height: 300vh;
             display: flex;
             align-items: flex-start;
             justify-content: center;
             padding-top: 25vh;
-            background-image: url('background.jpg');
-            background-size: auto;
-            background-position: top center;
-            background-repeat: no-repeat;
             position: relative;
         }
 
@@ -55,6 +61,8 @@
 </head>
 <body>
     <a href="mailto:matt@leitzpartners.com" class="contact-link">Contact</a>
-    <h1>Leitz Partners</h1>
+    <div class="container">
+        <h1>Leitz Partners</h1>
+    </div>
 </body>
 </html>
