@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: 'Arimo', sans-serif;
             margin: 0;
             padding: 0;
             background-image: url('background.jpg');
@@ -24,11 +24,25 @@
             background-repeat: no-repeat;
             background-attachment: scroll;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .container {
             width: 100%;
             position: relative;
+            z-index: 2;
         }
 
         .contact-link {
@@ -39,6 +53,7 @@
             text-decoration: none;
             font-size: 1rem;
             letter-spacing: 1px;
+            z-index: 3;
         }
 
         .contact-link:hover {
@@ -46,8 +61,8 @@
         }
 
         h1 {
-            font-size: 4.8rem;
-            color: white;
+            font-size: 8.4rem;
+            color: #d0d0d0;
             font-family: 'Arimo', sans-serif;
             font-weight: 700;
             font-style: italic;
