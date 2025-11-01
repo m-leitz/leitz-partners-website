@@ -22,7 +22,7 @@
     }
 
     * { box-sizing:border-box; margin:0; padding:0; }
-    html, body { height:100%; overscroll-behavior-y: none; background:#0b0b0b; }
+    html, body { height:100%; overscroll-behavior-y: none; background:#0b0b0b; scroll-behavior: smooth; }
 
     body {
       font-family: 'Arimo', sans-serif;
@@ -98,6 +98,9 @@
       text-align: center;
       padding: 40px 20px;
     }
+    .hero-inner { 
+      transform: translateY(-8vh); /* lift content a bit toward the spire */
+    }
     h1 {
       font-size: clamp(2rem, 8vw, 6rem);
       font-style: italic;
@@ -108,6 +111,21 @@
     .tagline {
       font-size: clamp(1rem, 2.8vw, 1.25rem);
       color: var(--muted);
+    }
+    .scroll-cue {
+      display: inline-block;
+      margin-top: 20px;
+      opacity: .9;
+      transition: transform .2s ease, opacity .2s ease;
+      animation: bounce 1.8s infinite;
+      text-decoration: none;
+      color: inherit;
+    }
+    .scroll-cue:hover { transform: translateY(2px); opacity: 1; }
+    .scroll-cue svg { width: 28px; height: 28px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
     }
 
     section {
@@ -146,6 +164,16 @@
     }
     .card p {
       color: var(--muted);
+    }
+
+    .scroll-cue-section {
+      display: block;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .about-section {
+      margin-top: 120px; /* move About section down */
     }
 
     .about-content {
@@ -239,9 +267,12 @@
   </header>
 
   <section class="hero" id="hero">
-    <div>
+    <div class="hero-inner">
       <h1>Leitz Partners</h1>
       <p class="tagline">Helping professional services firms run smarter behind the scenes.</p>
+      <a class="scroll-cue" href="#services" aria-label="Scroll to Services">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 16.5c-.38 0-.74-.15-1.06-.44l-6.5-6a1.5 1.5 0 1 1 2.12-2.12L12 12.94l5.44-5a1.5 1.5 0 1 1 2.12 2.12l-6.5 6a1.5 1.5 0 0 1-1.06.44z"/></svg>
+      </a>
     </div>
   </section>
 
@@ -261,9 +292,14 @@
         <p>Get ready for key transitions like fundraising, M&A, or leadership changes with financial hygiene, contract readiness, and operational playbooks that build investor and client confidence.</p>
       </div>
     </div>
+    <div class="scroll-cue-section">
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 16.5c-.38 0-.74-.15-1.06-.44l-6.5-6a1.5 1.5 0 1 1 2.12-2.12L12 12.94l5.44-5a1.5 1.5 0 1 1 2.12 2.12l-6.5 6a1.5 1.5 0 0 1-1.06.44z"/></svg>
+      </a>
+    </div>
   </section>
 
-  <section id="about">
+  <section id="about" class="about-section">
     <h2>About</h2>
     <div class="about-content">
       <img src="headshot.jpg" alt="Matthew Leitz headshot" />
