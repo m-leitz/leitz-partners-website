@@ -22,7 +22,7 @@
     }
 
     * { box-sizing:border-box; margin:0; padding:0; }
-    html, body { height:100%; }
+    html, body { height:100%; overscroll-behavior-y: none; background:#0b0b0b; }
 
     body {
       font-family: 'Arimo', sans-serif;
@@ -117,7 +117,7 @@
       text-align: center;
     }
     h2 {
-      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-size: clamp(2rem, 6vw, 4rem);
       margin-bottom: 20px;
       font-style: italic;
       color: var(--text);
@@ -171,6 +171,7 @@
     .about-text p {
       color: var(--muted);
       margin-bottom: 1em;
+      font-size: 1.1em;
     }
 
     .contact-btn {
@@ -198,7 +199,7 @@
       border-top: 1px solid var(--border);
       background: rgba(15,23,42,.45);
       backdrop-filter: blur(8px);
-      position: relative;
+      margin-top: auto; /* push footer to bottom of .page */
     }
 
     .social {
@@ -227,6 +228,7 @@
   </style>
 </head>
 <body>
+  <div class="page">
   <header>
     <a class="brand" href="#">Leitz Partners</a>
     <nav>
@@ -286,15 +288,15 @@
     document.getElementById('y').textContent = new Date().getFullYear();
 
     function setBgHeight() {
-      const docHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      );
-      document.documentElement.style.setProperty('--bgHeight', docHeight + 'px');
+      const page = document.querySelector('.page');
+      const desired = Math.max(page.scrollHeight, window.innerHeight);
+      document.documentElement.style.setProperty('--bgHeight', desired + 'px');
     }
-    window.addEventListener('load', setBgHeight);
+    window.addEventListener('load', setBgHeight, { once: true });
     window.addEventListener('resize', setBgHeight);
+    new ResizeObserver(setBgHeight).observe(document.querySelector('.page'));
     setBgHeight();
   </script>
+  </div>
 </body>
 </html>
