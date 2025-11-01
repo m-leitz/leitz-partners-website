@@ -16,8 +16,9 @@
       --muted:#cbd5e1;
       --overlay: rgba(2,6,23,.56);
       --accent:#38bdf8;
-      --card:#0f172a;
+      --card:rgba(15,15,15,0.6);
       --border:rgba(148,163,184,.18);
+      --bgHeight: 300vh;
     }
 
     * { box-sizing:border-box; margin:0; padding:0; }
@@ -26,18 +27,14 @@
     body {
       font-family: 'Arimo', sans-serif;
       color: var(--text);
-      background: var(--overlay);
       position: relative;
       line-height: 1.5;
+      background-image: url('background.jpg');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: auto var(--bgHeight);
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: url('background.jpg') center top / cover no-repeat;
-      z-index: -2;
-    }
     body::after {
       content: '';
       position: fixed;
@@ -129,6 +126,7 @@
       border-radius: 16px;
       padding: 24px;
       box-shadow: 0 6px 22px rgba(2,6,23,.18);
+      backdrop-filter: blur(6px);
     }
 
     .card h3 {
@@ -146,6 +144,12 @@
       align-items: center;
       gap: 24px;
       text-align: left;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 22px rgba(2,6,23,.18);
+      backdrop-filter: blur(6px);
     }
     .about-content img {
       width: 100%;
@@ -156,6 +160,7 @@
     }
     .about-text p {
       color: var(--muted);
+      margin-bottom: 1em;
     }
 
     .contact-btn {
@@ -164,10 +169,12 @@
       text-decoration: none;
       color: var(--text);
       font-weight: 700;
-      border: 2px solid rgba(255,255,255,.3);
+      border: 1px solid var(--border);
       padding: 18px 36px;
       border-radius: 12px;
-      background: rgba(15,23,42,.55);
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 22px rgba(2,6,23,.18);
       transition: border-color .2s ease, transform .15s ease;
       font-size: 1.1rem;
     }
@@ -246,10 +253,11 @@
 
   <section id="about">
     <h2>About</h2>
-    <div class="card about-content">
+    <div class="about-content">
       <img src="headshot.jpg" alt="Matthew Leitz headshot" />
       <div class="about-text">
         <p>Matthew Leitz is the founder of Leitz Partners. With experience spanning finance, human capital, operations, and growth, Matt partners with leaders of professional services firms to understand their goals and develop clear paths to accomplish them. He specializes in working with owner-operators considering expansion, serving as a bridge to a full-time leadership hire.</p>
+        <p>Matt is based in Brooklyn, New York, where he lives with his wife, daughter and dog. In the morning, you'll find him pushing a stroller to his favorite Cobble Hill coffee shops. In the evening, he's cheering on the Boston Celtics.</p>
       </div>
     </div>
     <a class="contact-btn" href="mailto:matt@leitzpartners.com">Contact Us</a>
@@ -266,6 +274,17 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    function setBgHeight() {
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+      document.documentElement.style.setProperty('--bgHeight', docHeight + 'px');
+    }
+    window.addEventListener('load', setBgHeight);
+    window.addEventListener('resize', setBgHeight);
+    setBgHeight();
   </script>
 </body>
 </html>
