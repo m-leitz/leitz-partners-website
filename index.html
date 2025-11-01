@@ -1,109 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leitz Partners</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leitz Partners</title>
+  <meta name="description" content="Leitz Partners — helping professional services firms run smarter behind the scenes." />
 
-        body {
-            font-family: 'Arimo', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('background.jpg');
-            background-size: 100% auto;
-            background-position: top center;
-            background-repeat: no-repeat;
-            background-attachment: scroll;
-            overflow-x: hidden;
-            position: relative;
-        }
+  <!-- Social preview -->
+  <meta property="og:title" content="Leitz Partners" />
+  <meta property="og:description" content="Helping professional services firms run smarter behind the scenes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://leitzpartners.com/" />
+  <meta property="og:image" content="https://leitzpartners.com/og-image.jpg" />
+  <meta property="og:site_name" content="Leitz Partners" />
+  <meta name="theme-color" content="#0f172a" />
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            pointer-events: none;
-            z-index: 1;
-        }
+  <!-- LinkedIn -->
+  <link rel="me" href="https://www.linkedin.com/company/leitz-partners/" />
 
-        .container {
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="/favicon.ico" />
 
-        .contact-link {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            z-index: 3;
-        }
+  <!-- Font (kept from your version) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,700&display=swap" rel="stylesheet">
 
-        .contact-link:hover {
-            text-decoration: underline;
-        }
+  <style>
+    :root{
+      --text:#e5e7eb;
+      --muted:#cbd5e1;
+      --overlay: rgba(2,6,23,.56);
+      --accent:#38bdf8;
+    }
 
-        h1 {
-            font-size: 8.4rem;
-            color: #d0d0d0;
-            font-family: 'Arimo', sans-serif;
-            font-weight: 700;
-            font-style: italic;
-            letter-spacing: 2px;
-            position: absolute;
-            top: 25vh;
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0;
-            white-space: nowrap;
-        }
+    * { box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.4;
+      color:var(--text);
+      background:
+        linear-gradient(var(--overlay), var(--overlay)),
+        url('/mnt/data/background.jpg') center / cover no-repeat;
+    }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { left:16px; top:16px; width:auto; height:auto; padding:8px 12px; background:#000; color:#fff; border-radius:8px; }
+
+    .wrap{
+      min-height:100dvh;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+    }
+    header{
+      position:relative;
+      padding:20px 24px;
+    }
+    .contact{
+      position:absolute;
+      right:24px; top:22px;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:700;
+      letter-spacing:.04em;
+      border:1px solid rgba(255,255,255,.18);
+      padding:10px 14px;
+      border-radius:12px;
+      backdrop-filter: blur(6px);
+      background: rgba(15,23,42,.35);
+      transition: transform .06s ease, border-color .2s ease;
+    }
+    .contact:hover, .contact:focus{ outline:none; transform:translateY(-1px); border-color: var(--accent); }
+
+    main{
+      display:grid; place-items:center; padding:24px; text-align:center;
+    }
+    h1{
+      margin:0 0 10px;
+      font-family:'Arimo', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-weight:700; font-style:italic;
+      letter-spacing:.02em;
+      font-size:clamp(2rem, 8vw, 6rem);
+      text-shadow:0 2px 28px rgba(0,0,0,.45);
+      white-space:nowrap;
+    }
+    .tagline{
+      margin:6px 0 0;
+      font-size:clamp(1rem, 2.8vw, 1.25rem);
+      color:var(--muted);
+    }
+
+    footer{
+      padding:18px 24px; color:var(--muted); font-size:.95rem;
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      background: linear-gradient(to top, rgba(2,6,23,.55), rgba(2,6,23,0));
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .social a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .social a svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+    .social a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width:520px){
+      h1{ white-space:normal; }
+      .contact{ position:static; display:inline-block; margin:8px 0 0; }
+      header{ text-align:center; }
+    }
+  </style>
 </head>
 <body>
-    <a href="mailto:matt@leitzpartners.com" class="contact-link">Contact</a>
-    <div class="container">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <header>
+      <a class="contact" href="mailto:matt@leitzpartners.com?subject=Hello%20from%20your%20website" aria-label="Email Leitz Partners">Contact</a>
+    </header>
+
+    <main id="main" role="main" aria-label="Leitz Partners">
+      <div>
         <h1>Leitz Partners</h1>
-    </div>
+        <p class="tagline">Helping professional services firms run smarter behind the scenes.</p>
+      </div>
+    </main>
 
-    <script>
-        function adjustPageHeight() {
-            const img = new Image();
-            img.src = 'background.jpg';
-            
-            img.onload = function() {
-                const aspectRatio = img.height / img.width;
-                const screenWidth = window.innerWidth;
-                const calculatedHeight = screenWidth * aspectRatio;
-                
-                document.querySelector('.container').style.height = calculatedHeight + 'px';
-            };
-        }
+    <footer>
+      <div>© <span id="y"></span> Leitz Partners</div>
+      <div class="social">
+        <a href="https://www.linkedin.com/company/leitz-partners/" target="_blank" rel="noopener" aria-label="Leitz Partners on LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.6c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 1.9-2.9 3.9V24h-4V8.5z"/></svg>
+        </a>
+      </div>
+    </footer>
+  </div>
 
-        adjustPageHeight();
-        window.addEventListener('resize', adjustPageHeight);
-    </script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
