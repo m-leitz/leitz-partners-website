@@ -6,145 +6,263 @@
   <title>Leitz Partners</title>
   <meta name="description" content="Leitz Partners — helping professional services firms run smarter behind the scenes." />
 
-  <!-- Social preview -->
-  <meta property="og:title" content="Leitz Partners" />
-  <meta property="og:description" content="Helping professional services firms run smarter behind the scenes." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://leitzpartners.com/" />
-  <meta property="og:image" content="https://leitzpartners.com/og-image.jpg" />
-  <meta property="og:site_name" content="Leitz Partners" />
-  <meta name="theme-color" content="#0f172a" />
-
-  <!-- LinkedIn -->
-  <link rel="me" href="https://www.linkedin.com/company/leitz-partners/" />
-
-  <!-- Favicon (optional) -->
-  <link rel="icon" href="/favicon.ico" />
-
-  <!-- Font (kept from your version) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --text:#e5e7eb;
       --muted:#cbd5e1;
       --overlay: rgba(2,6,23,.56);
       --accent:#38bdf8;
+      --card:#0f172a;
+      --border:rgba(148,163,184,.18);
     }
 
-    * { box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height:1.4;
-      color:var(--text);
-      background:
-        linear-gradient(var(--overlay), var(--overlay)),
-        url('background.jpg') center / cover no-repeat;
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body { height:100%; }
+
+    body {
+      font-family: 'Arimo', sans-serif;
+      color: var(--text);
+      background: var(--overlay);
+      position: relative;
+      line-height: 1.5;
     }
 
-    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus { left:16px; top:16px; width:auto; height:auto; padding:8px 12px; background:#000; color:#fff; border-radius:8px; }
-
-    .wrap{
-      min-height:100dvh;
-      display:grid;
-      grid-template-rows:auto 1fr auto;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('background.jpg') center top / cover no-repeat;
+      z-index: -2;
     }
-    header{
-      position:relative;
-      padding:20px 24px;
-    }
-    .contact{
-      position:absolute;
-      right:24px; top:22px;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:700;
-      letter-spacing:.04em;
-      border:1px solid rgba(255,255,255,.18);
-      padding:10px 14px;
-      border-radius:12px;
-      backdrop-filter: blur(6px);
-      background: rgba(15,23,42,.35);
-      transition: transform .06s ease, border-color .2s ease;
-    }
-    .contact:hover, .contact:focus{ outline:none; transform:translateY(-1px); border-color: var(--accent); }
-
-    main{
-      display:grid; place-items:center; padding:24px; text-align:center;
-    }
-    h1{
-      margin:0 0 10px;
-      font-family:'Arimo', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-weight:700; font-style:italic;
-      letter-spacing:.02em;
-      font-size:clamp(2rem, 8vw, 6rem);
-      text-shadow:0 2px 28px rgba(0,0,0,.45);
-      white-space:nowrap;
-    }
-    .tagline{
-      margin:6px 0 0;
-      font-size:clamp(1rem, 2.8vw, 1.25rem);
-      color:var(--muted);
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: var(--overlay);
+      z-index: -1;
     }
 
-    footer{
-      padding:18px 24px; color:var(--muted); font-size:.95rem;
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      background: linear-gradient(to top, rgba(2,6,23,.55), rgba(2,6,23,0));
-      border-top: 1px solid rgba(255,255,255,.12);
-    }
-    .social a {
-      text-decoration: none;
-      color: var(--muted);
-      transition: color 0.2s ease;
-      display: inline-flex;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-    }
-    .social a svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-    .social a:hover {
-      color: var(--accent);
+      padding: 20px 24px;
+      background: rgba(15,23,42,.45);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
     }
 
-    @media (max-width:520px){
-      h1{ white-space:normal; }
-      .contact{ position:static; display:inline-block; margin:8px 0 0; }
-      header{ text-align:center; }
+    .brand {
+      color: var(--text);
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: 700;
+      transition: color .2s ease;
+    }
+    nav a:hover { color: var(--accent); }
+
+    .contact {
+      text-decoration:none;
+      color: var(--text);
+      font-weight:700;
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(15,23,42,.35);
+      transition: border-color .2s ease;
+    }
+    .contact:hover { border-color: var(--accent); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: clamp(2rem, 8vw, 6rem);
+      font-style: italic;
+      letter-spacing: .02em;
+      text-shadow: 0 2px 28px rgba(0,0,0,.45);
+      margin-bottom: 10px;
+    }
+    .tagline {
+      font-size: clamp(1rem, 2.8vw, 1.25rem);
+      color: var(--muted);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 22px rgba(2,6,23,.18);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+    .card p {
+      color: var(--muted);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: center;
+      gap: 24px;
+      text-align: left;
+    }
+    .about-content img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      box-shadow: 0 6px 22px rgba(2,6,23,.25);
+    }
+    .about-text p {
+      color: var(--muted);
+    }
+
+    .contact-btn {
+      display: inline-block;
+      margin: 50px auto 0 auto;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      border: 2px solid rgba(255,255,255,.3);
+      padding: 18px 36px;
+      border-radius: 12px;
+      background: rgba(15,23,42,.55);
+      transition: border-color .2s ease, transform .15s ease;
+      font-size: 1.1rem;
+    }
+    .contact-btn:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    footer {
+      padding: 18px 24px;
+      color: var(--muted);
+      font-size: .95rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      background: rgba(15,23,42,.45);
+      backdrop-filter: blur(8px);
+      position: relative;
+    }
+
+    .social {
+      position: absolute;
+      right: 24px;
+      bottom: 18px;
+    }
+
+    .social a svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--muted);
+      transition: fill .2s ease;
+    }
+
+    .social a:hover svg {
+      fill: var(--accent);
+    }
+
+    @media (max-width:860px) {
+      .grid { grid-template-columns: 1fr; }
+      .about-content { grid-template-columns: 1fr; text-align: center; }
+      .about-content img { margin: 0 auto; }
+      .social { position: static; margin-top: 10px; }
     }
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <a class="brand" href="#">Leitz Partners</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a class="contact" href="mailto:matt@leitzpartners.com">Contact Us</a>
+    </nav>
+  </header>
 
-  <div class="wrap">
-    <header>
-      <a class="contact" href="mailto:matt@leitzpartners.com?subject=Hello%20from%20your%20website" aria-label="Email Leitz Partners">Contact</a>
-    </header>
+  <section class="hero" id="hero">
+    <div>
+      <h1>Leitz Partners</h1>
+      <p class="tagline">Helping professional services firms run smarter behind the scenes.</p>
+    </div>
+  </section>
 
-    <main id="main" role="main" aria-label="Leitz Partners">
-      <div>
-        <h1>Leitz Partners</h1>
-        <p class="tagline">Helping professional services firms run smarter behind the scenes.</p>
+  <section id="services">
+    <h2>Services</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Back Office Foundations</h3>
+        <p>Establish clear financial visibility and operational discipline—covering accounting structure, reporting cadence, and essential policies that keep the business running smoothly.</p>
       </div>
-    </main>
-
-    <footer>
-      <div>© <span id="y"></span> Leitz Partners</div>
-      <div class="social">
-        <a href="https://www.linkedin.com/company/leitz-partners/" target="_blank" rel="noopener" aria-label="Leitz Partners on LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4V8.5zM8.5 8.5h3.8v2.1h.1c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.6c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 1.9-2.9 3.9V24h-4V8.5z"/></svg>
-        </a>
+      <div class="card">
+        <h3>System Implementation</h3>
+        <p>Design and deploy the right mix of tools—from CRMs to billing and workflow systems—so data connects cleanly and teams spend less time managing processes and more time delivering results.</p>
       </div>
-    </footer>
-  </div>
+      <div class="card">
+        <h3>Milestone Preparation</h3>
+        <p>Get ready for key transitions like fundraising, M&A, or leadership changes with financial hygiene, contract readiness, and operational playbooks that build investor and client confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="card about-content">
+      <img src="headshot.jpg" alt="Matthew Leitz headshot" />
+      <div class="about-text">
+        <p>Matthew Leitz is the founder of Leitz Partners. With experience spanning finance, human capital, operations, and growth, Matt partners with leaders of professional services firms to understand their goals and develop clear paths to accomplish them. He specializes in working with owner-operators considering expansion, serving as a bridge to a full-time leadership hire.</p>
+      </div>
+    </div>
+    <a class="contact-btn" href="mailto:matt@leitzpartners.com">Contact Us</a>
+  </section>
+
+  <footer>
+    © <span id="y"></span> Leitz Partners
+    <div class="social">
+      <a href="https://www.linkedin.com/company/leitz-partners/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.75 20h-3v-11h3v11zm-1.5-12.25c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm14.25 12.25h-3v-5.5c0-1.32-.03-3.02-1.84-3.02-1.84 0-2.12 1.43-2.12 2.91v5.61h-3v-11h2.88v1.5h.04c.4-.76 1.38-1.55 2.84-1.55 3.04 0 3.6 2 3.6 4.59v6.46z"/></svg>
+      </a>
+    </div>
+  </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
