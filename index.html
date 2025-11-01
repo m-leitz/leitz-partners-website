@@ -28,11 +28,19 @@
       font-family: 'Arimo', sans-serif;
       color: var(--text);
       position: relative;
+      min-height: 100%;
       line-height: 1.5;
-      background-image: url('background.jpg');
-      background-repeat: no-repeat;
-      background-position: center top;
-      background-size: auto var(--bgHeight);
+      background: none;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: var(--bgHeight);
+      background: url('background.jpg') center top / cover no-repeat;
+      z-index: -2;
     }
 
     body::after {
@@ -51,9 +59,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 24px;
-      background: rgba(15,23,42,.45);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      border-bottom: none;
     }
 
     .brand {
@@ -110,8 +117,11 @@
       text-align: center;
     }
     h2 {
-      font-size: 1.5rem;
+      font-size: clamp(1.5rem, 4vw, 3rem);
       margin-bottom: 20px;
+      font-style: italic;
+      color: var(--text);
+      text-shadow: 0 2px 20px rgba(0,0,0,.4);
     }
 
     .grid {
@@ -154,7 +164,7 @@
     .about-content img {
       width: 100%;
       max-width: 250px;
-      border-radius: 50%;
+      border-radius: 12px;
       border: 2px solid var(--border);
       box-shadow: 0 6px 22px rgba(2,6,23,.25);
     }
