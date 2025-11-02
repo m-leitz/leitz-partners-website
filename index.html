@@ -39,16 +39,10 @@
       top: 0; left: 0;
       width: 100vw;
       height: var(--bgHeight);
-      background: url('background.jpg') center top / cover no-repeat;
+      background: 
+        linear-gradient(var(--overlay), var(--overlay)),
+        url('background.jpg') center top / cover no-repeat;
       z-index: -2;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: var(--overlay);
-      z-index: -1;
     }
 
     header {
